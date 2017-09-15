@@ -11,20 +11,24 @@ router.get("/register", function(req, res){
 router.post("/register", function(req,res){
   const newUser = models.users.build({
     username: req.body.username,
-    password: req.body.password,
     displayName: req.body.displayName
   })
+  newUser.password = bcrypt.hashSync(req.body.password, 8)
   newUser.save()
   .then(function(user){
     res.redirect("/login")
   })
   .catch(function(error){
+    console.log(error)
     res.render("register", {
       errorMessage: "Something is wrong!!",
       error: error.errors
     })
   })
 })
+
+
+
 
 
 module.exports = router

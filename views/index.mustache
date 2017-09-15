@@ -12,6 +12,15 @@
       <a href="#">Logged in as THIS</a>
       <a href="/logout">Log Out</a>
     </div>
+
+    <h2>{{testmessage}}</h2>
     <h1>HI I WORK</h1>
+
+    <div class="posts">
+      {{#posts}}
+      {{title}}
+      {{body}}
+      {{/posts}}
+    </div>
   </body>
 </html>
