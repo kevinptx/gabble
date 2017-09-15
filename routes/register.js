@@ -19,7 +19,6 @@ router.post("/register", function(req,res){
     res.redirect("/login")
   })
   .catch(function(error){
-    console.log(error)
     res.render("register", {
       errorMessage: "Something is wrong!!",
       error: error.errors

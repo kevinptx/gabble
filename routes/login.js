@@ -12,8 +12,8 @@ const requireAuth = function(req, res, next){
 }
 
 router.get("/", requireAuth, function(req, res){
-  console.log("Connected");
-  models.posts.findAll()
+  // console.log("Connected");
+  models.posts.findAll({ limit:30, order: [['createdAt', 'DESC']] })
   .then(function(posts){
     res.render("index", {
       testmessage: "Posts successfully rendered!",
@@ -21,6 +21,7 @@ router.get("/", requireAuth, function(req, res){
     })
   })
 })
+
 
 router.get("/login", function(req, res){
   res.render("login")
