@@ -15,12 +15,26 @@ router.get("/", requireAuth, function(req, res){
   // console.log("Connected");
   models.posts.findAll({ limit:30, order: [['createdAt', 'DESC']] })
   .then(function(posts){
-    res.render("index", {
-      testmessage: "Posts successfully rendered!",
-      posts:posts
+    models.likes.findAll()
+    .then(function(likes){
+      models.users.findOne()
+      .then(function(user){
+        res.render("index", {
+          testmessage: "Posts successfully rendered!",
+          posts:posts,
+          likes:likes,
+          user: req.session.user
+        })
+      })
     })
   })
 })
+
+
+
+
+
+
 
 
 router.get("/login", function(req, res){

@@ -3,33 +3,46 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/styles.css">
-    <title></title>
+    <title>Gabble</title>
   </head>
 
   <body>
     <div class="">
       <a href="/">Gabble</a>
       <a href="/newGab">Create a New Gab</a>
-      <a href="#">Logged in as THIS</a>
+      {{#user}}
+      <a href="#">Logged in as{{username}}</a>
+      {{/user}}
       <a href="/logout">Log Out</a>
     </div>
 
     <h2>{{testmessage}}</h2>
-    <h1>HI I WORK</h1>
+    <h1>GABBLE</h1>
 
     <div class="posts">
       {{#posts}}
       <div class="postsDiv">
+
         <div class="title">
           {{title}}
         </div>
+
           <div class="body">
             {{body}}
           </div>
+
+          <div class="">
+            <h3>Liked By:</h3>
+            {{#likes}}
+            {{userId}}
+            {{/likes}}
+          </div>
+
           <div class="editGab">
-            <a href="/like">Like</a>
+            <a href="/like/{{id}}">Like</a>
             <a href="/delete/{{id}}">Delete Gab</a>
           </div>
+
       </div>
       {{/posts}}
     </div>
