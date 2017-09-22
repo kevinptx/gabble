@@ -7,7 +7,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        likes.hasMany(models.users,{onDelete: 'CASCADE'});
+        likes.hasMany(models.posts,{onDelete: 'CASCADE'});
+
       }
     }
   });

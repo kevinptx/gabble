@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "kp",
-    "password": "Gutengut12",
+    "username": "",
+    "password": "",
     "database": "gabbledb",
     "host": "127.0.0.1",
     "dialect": "postgres"
